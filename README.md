@@ -24,11 +24,11 @@ To understand the conjugate gradient method we need to understand the more gener
 
 $$Ax = b$$
 
-Where A is a symmetric definite positive matrix. The motivation to solve this system is that finding $x^{*}$ that solves the system above is equivalent to finding the critical point of the function given by:
+Where A is a symmetric definite positive matrix. The motivation to solve this system is that finding $x^{\star}$ that solves the system above is equivalent to finding the critical point of the function given by:
 
 $$f(x) = \frac{1}{2}x^{T}Ax - b^{T}x + c$$
 
-To find $x^{\star}$, we need a set of A-orthogonal search directions, $d_{(0)},d_{(1)},...,d_{(n-1)}$ where n is the dimension of x. We will start with $x_{(0)}$, which is a guess of $x^{*}$ and at each iteration of a conjugate direction method, we update our guess by giving a step in one of the search directions. The idea is to give the perfect step in each search direction, so we only need n iterations to go from our guess $x_{(0)}$ to the correct $x^{*}$.
+To find $x^{\star}$, we need a set of A-orthogonal search directions, $d_{(0)},d_{(1)},...,d_{(n-1)}$ where n is the dimension of x. We will start with $x_{(0)}$, which is a guess of $x^{\star}$ and at each iteration of a conjugate direction method, we update our guess by giving a step in one of the search directions. The idea is to give the perfect step in each search direction, so we only need n iterations to go from our guess $x_{(0)}$ to the correct $x^{\star}$.
 This means that after we correct $x_{(i)}$ regarding one direction $d_{(i)}$, we do not need to change $x_{(j)}, j>i$ again in this direction because it is already how it should be. So we can write each iteration of conjugate direction methods as:
 
 $$x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)}$$

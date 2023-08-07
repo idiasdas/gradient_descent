@@ -11,8 +11,10 @@ In this project, we applied the Newton method along with the conjugate gradient 
 
 ### 1. Understanding the project
 For this project, we chose the proposed subject 4, "Implement the (inexact) Newton method without inverting the Hessian, but using the conjugate gradient method". So basically we have to take Newton method that looks like this:
-$$ \omega_{k+1} \xleftarrow{} \omega_{k} + \alpha s_{k} $$
-$$ \nabla^{2} F(\omega_{k}) s_{k}= - \nabla F(\omega_{k})$$
+
+$$\omega_{k+1} \xleftarrow{} \omega_{k} + \alpha s_{k} $$
+
+$$\nabla^{2} F(\omega_{k}) s_{k}= - \nabla F(\omega_{k})$$
 
 And when we want to solve the system above to find $s_{k}$, we will use the conjugate gradient method. The conjugate gradient is an iterative method, and we want to know what happens if we stop it early. So first, in this section, we look into the conjugate gradient method and how to use it and then in the next section, we show how we implemented the methods and experiments. Finally, we present our results and conclusion. 
 
@@ -30,9 +32,7 @@ $$
 To find $x^{*}$, we need a set of A-orthogonal search directions, $d_{(0)},d_{(1)},...,d_{(n-1)}$ where n is the dimension of x. We will start with $x_{(0)}$, which is a guess of $x^{*}$ and at each iteration of a conjugate direction method, we update our guess by giving a step in one of the search directions. The idea is to give the perfect step in each search direction, so we only need n iterations to go from our guess $x_{(0)}$ to the correct $x^{*}$.
 This means that after we correct $x_{(i)}$ regarding one direction $d_{(i)}$, we do not need to change $x_{(j)}, j>i$ again in this direction because it is already how it should be. So we can write each iteration of conjugate direction methods as:
 
-$$
-    x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)}
-$$
+$$x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)}$$
 
 Where $d_{(i)}$ is a search direction and $\alpha_{(i)}$ is the step size we take in this direction. In this method, the residual at each iteration, given by $r_{(i)} = b - Ax_{(i)}$, is orthogonal to all the previous search directions. This means that the set of residuals are independent vectors. Thus we can use Gram-Shmidt on these vectors to construct the A-orthogonal search directions. Which is called the Conjugate Gradient method. Given an initial vector $x_{(0)}$,we initialise the first residual and search direction as below:
 

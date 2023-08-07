@@ -17,21 +17,21 @@ def minusGradient_f(A: np.array,b: np.array,X: np.array) -> np.float64:
 
 
 def steepest_descent(A,b,c,x0,epsilon):
-    ri=minusGradient_f(A,b,x0)
+    minus_gradient=minusGradient_f(A,b,x0)
     xi=x0
     i=0
-    while np.linalg.norm(ri)>=epsilon: # If the norm of the gradient is less than epsilon, we stop
-        print("gradient",ri)
+    while np.linalg.norm(minus_gradient)>=epsilon: # If the norm of the gradient is less than epsilon, we stop
+        print("gradient",minus_gradient)
         print("current point",xi)
 
         print("Function value", quadraticFunction_f(A,b,c,xi))
         print()
-        Ar=np.dot(A,ri)
-        rr=np.dot(ri,ri)
-        rAr=np.dot(ri,Ar)
-        alphai= rr/rAr
-        xi=xi+alphai*ri
-        ri=ri-alphai*Ar
+        Ar=np.dot(A,minus_gradient)
+        gradient_square=np.dot(minus_gradient,minus_gradient)
+        rAr=np.dot(minus_gradient,Ar)
+        alphai= gradient_square/rAr
+        xi=xi+alphai*minus_gradient
+        minus_gradient=minus_gradient-alphai*Ar
         i=i+1
         print(i)
 

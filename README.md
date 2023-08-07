@@ -90,23 +90,21 @@ $$ \nabla F(\omega_{k}) = H\omega_{k} - Z^{T}$$
 
 And the Hessian is simply $H$.
 
-In our experiments, we considered 3 different degrees for the polynomials, 3,5 and 7. And we used 3 different polynomials for each degree. So we have 9 different functions that we want to approximate using the Newton Method with Conjugate Gradient. For each function, we evaluate the effect of using $i<d$ iterations, $d$ is the degree of the polynomial in the CG method on the number of iterations taken by the Newton method to converge to the optimal solution within a fixed error of $0.1$. We note that if the Newton method iterates and cannot reach this precision within 10 million iterations, we stop the algorithm.
+In our experiments, we considered 3 different degrees for the polynomials, 3, 5 and 7. And we used 3 different polynomials for each degree. So we have 9 different functions that we want to approximate using the Newton Method with Conjugate Gradient. For each function, we evaluate the effect of using $i < d$ iterations. $d$ is the degree of the polynomial in the CG method on the number of iterations taken by the Newton method to converge to the optimal solution within a fixed error of $0.1$. We note that if the Newton method iterates and cannot reach this precision within 10 million iterations, we stop the algorithm.
 
 So, for example, for a function that is a polynomial of degree 3, we are going to use another polynomial of degree 3 to approximate it, and we are going to do it three times. In the first time, we will only execute the Conjugate Gradient for 1 iteration, the second time, we are going to execute it for 2 iterations. And finally, in the third time, we are going to execute all 3 iterations.
 
 The functions we considered were:
 
-$$
-     y_{1} = 1 + 9x + 10x^{2}\\
-     y_{2} = 2 + 5x + 8x^{2}\\
-     y_{3} = 3 + 6x + 2x^{2}\\
-     y_{4} = 5 + 9x + 4x^{2} + 6x^{3} + 3x^{4}\\
-     y_{5} = 1 + 1x + 2x^{2} + 3x^{3} + 4x^{4}\\
-     y_{6} = 2 + 6x + 9x^{2} + 5x^{3} + 1x^{4}\\
-     y_{7} = 1 + 6x + 8x^{2} + 2x^{3} + 3x^{4} + 10x^{5} + 2x^{6}\\
-     y_{8} = 2 + 10x + 8x^{2} + 1x^{3} + 7x^{4} + 3x^{5} + 9x^{6}\\
-     y_{9} = 5 + 9x + 10x^{2} + 4x^{3} + 5x^{4} + 5x^{5} + x^{6}
-$$
+$$ y_{1} = 1 + 9x + 10x^{2} $$
+$$ y_{2} = 2 + 5x + 8x^{2} $$
+$$ y_{3} = 3 + 6x + 2x^{2} $$
+$$ y_{4} = 5 + 9x + 4x^{2} + 6x^{3} + 3x^{4} $$
+$$ y_{5} = 1 + 1x + 2x^{2} + 3x^{3} + 4x^{4} $$
+$$ y_{6} = 2 + 6x + 9x^{2} + 5x^{3} + 1x^{4} $$
+$$ y_{7} = 1 + 6x + 8x^{2} + 2x^{3} + 3x^{4} + 10x^{5} + 2x^{6} $$
+$$ y_{8} = 2 + 10x + 8x^{2} + 1x^{3} + 7x^{4} + 3x^{5} + 9x^{6} $$
+$$ y_{9} = 5 + 9x + 10x^{2} + 4x^{3} + 5x^{4} + 5x^{5} + x^{6}$$
 
 ### 5. Results
 

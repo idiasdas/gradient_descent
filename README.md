@@ -29,11 +29,11 @@ Where A is a symmetric definite positive matrix. The motivation to solve this sy
 $$f(x) =(1/2)x^{T}Ax - b^{T}x + c$$
 
 To find $x^{\star}$, we need a set of A-orthogonal search directions, $d_{(0)},d_{(1)},...,d_{(n-1)}$ where n is the dimension of x. We will start with $x_{(0)}$, which is a guess of $x^{\star}$ and at each iteration of a conjugate direction method, we update our guess by giving a step in one of the search directions. The idea is to give the perfect step in each search direction, so we only need n iterations to go from our guess $x_{(0)}$ to the correct $x^{\star}$.
-This means that after we correct $x_{(i)}$ regarding one direction $d_{(i)}$, we do not need to change $x_{(j)}, j>i$ again in this direction because it is already how it should be. So we can write each iteration of conjugate direction methods as:
+This means that after we correct $x_{\left(i\right)}$ regarding one direction $d_{\left(i\right)}$, we do not need to change $x_{(j)}, j>i$ again in this direction because it is already how it should be. So we can write each iteration of conjugate direction methods as:
 
-$$x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)}$$
+$$x_{(i+1)} = x_{\left(i\right)} + \alpha_{\left(i\right)}d_{\left(i\right)}$$
 
-Where $d_{(i)}$ is a search direction and $\alpha_{(i)}$ is the step size we take in this direction. In this method, the residual at each iteration, given by $r_{(i)} = b - Ax_{(i)}$, is orthogonal to all the previous search directions. This means that the set of residuals are independent vectors. Thus we can use Gram-Shmidt on these vectors to construct the A-orthogonal search directions. Which is called the Conjugate Gradient method. Given an initial vector $x_{(0)}$,we initialise the first residual and search direction as below:
+Where $d_{\left(i\right)}$ is a search direction and $\alpha_{\left(i\right)}$ is the step size we take in this direction. In this method, the residual at each iteration, given by $r_{\left(i\right)} = b - Ax_{\left(i\right)}$, is orthogonal to all the previous search directions. This means that the set of residuals are independent vectors. Thus we can use Gram-Shmidt on these vectors to construct the A-orthogonal search directions. Which is called the Conjugate Gradient method. Given an initial vector $x_{(0)}$,we initialise the first residual and search direction as below:
 
 $$ r_{(0)} \xleftarrow{}  b - Ax_{(0)}$$
 
@@ -43,15 +43,15 @@ $$ d_{(0)} \xleftarrow{} r_{(0)}$$
 
 Then we follow the next steps iteratively:
 
-1. $$\alpha_{(i)} = (r^{T}_{(i)} r_{(i)}) / (d^{T}_{(i)} Ad_{(i)})$$
+1. $$\alpha_{\left(i\right)} = (r^{T}_{\left(i\right)} r_{\left(i\right)}) / (d^{T}_{\left(i\right)} Ad_{\left(i\right)})$$
 
-2. $$x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)} $$
+2. $$x_{(i+1)} = x_{\left(i\right)} + \alpha_{\left(i\right)}d_{\left(i\right)} $$
 
-3. $$r_{(i+1)} = r_{(i)} - \alpha_{(i)}Ad_{(i)} $$
+3. $$r_{(i+1)} = r_{\left(i\right)} - \alpha_{\left(i\right)}Ad_{\left(i\right)} $$
 
-4. $$\beta_{(i+1)} = (r^{T}_{(i+1)} r_{(i+1)}) / (r^{T}_{(i)} r_{(i)}) $$
+4. $$\beta_{(i+1)} = (r^{T}_{(i+1)} r_{(i+1)}) / (r^{T}_{\left(i\right)} r_{\left(i\right)}) $$
 
-5. $$d_{(i+1)} = r_{(i+1)} + \beta_{(i+1)}d_{(i)} $$
+5. $$d_{(i+1)} = r_{(i+1)} + \beta_{(i+1)}d_{\left(i\right)} $$
 
 In 1, we compute the step size. Then in 3, we compute the new residual. Finally, we use 4 and 5 to compute the next direction, which is A-orthogonal to all previous directions. Equations 4 and 5 were obtained using Gram-Schmidt Conjugation to produce the new direction.
 In what follows, we will use the conjugate gradient method to solve the system $Ax = b$ in the Newton method and evaluate the effect of using iterations less than $b$.

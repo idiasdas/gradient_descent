@@ -26,7 +26,7 @@ $$Ax = b$$
 
 Where A is a symmetric definite positive matrix. The motivation to solve this system is that finding $x^{\star}$ that solves the system above is equivalent to finding the critical point of the function given by:
 
-$$f(x) = \frac{1}{2}x^{T}Ax - b^{T}x + c$$
+$$f(x) =(1/2)x^{T}Ax - b^{T}x + c$$
 
 To find $x^{\star}$, we need a set of A-orthogonal search directions, $d_{(0)},d_{(1)},...,d_{(n-1)}$ where n is the dimension of x. We will start with $x_{(0)}$, which is a guess of $x^{\star}$ and at each iteration of a conjugate direction method, we update our guess by giving a step in one of the search directions. The idea is to give the perfect step in each search direction, so we only need n iterations to go from our guess $x_{(0)}$ to the correct $x^{\star}$.
 This means that after we correct $x_{(i)}$ regarding one direction $d_{(i)}$, we do not need to change $x_{(j)}, j>i$ again in this direction because it is already how it should be. So we can write each iteration of conjugate direction methods as:
@@ -43,13 +43,13 @@ $$ d_{(0)} \xleftarrow{} r_{(0)}$$
 
 Then we follow the next steps iteratively:
 
-1. $$\alpha_{(i)} = \frac{r^{T}_{(i)}r_{(i)}}{d^{T}_{(i)}Ad_{(i)}} $$
+1. $$\alpha_{(i)} = (r^{T}_{(i)}r_{(i)})/(d^{T}_{(i)}Ad_{(i)})$$
 
 2. $$x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)} $$
 
 3. $$r_{(i+1)} = r_{(i)} - \alpha_{(i)}Ad_{(i)} $$
 
-4. $$\beta_{(i+1)} = \frac{r^{T}_{(i+1)}r_{(i+1)}}{r^{T}_{(i)}r_{(i)}} $$
+4. $$\beta_{(i+1)} = (r^{T}_{(i+1)}r_{(i+1)})/(r^{T}_{(i)}r_{(i)}) $$
 
 5. $$d_{(i+1)} = r_{(i+1)} + \beta_{(i+1)}d_{(i)} $$
 
@@ -64,7 +64,7 @@ $$f(\omega , x) = \omega_{0} + \omega_{1}x + ... + \omega_{n}x^{d-1}$$
 
 We define our loss function as:
 
-$$F(\omega_{k}) = \frac{1}{n}\sum^{n}_{i=1}(f(\omega_{k},x) - y)^{2}$$
+$$F(\omega_{k}) = (1/n)\sum^{n}_{i=1}(f(\omega_{k},x) - y)^{2}$$
 
 
 If we want to find the parameter vector $\omega^{*}$ that minimizes our loss function $F(\omega)$, we can use the equations \ref{Eq:Newton_update_param_vector} and \ref{Eq:Newton_find_sk} of the Newton method, and converge to the answer. But to do this we need to solve the system in equation \ref{Eq:Newton_find_sk} to find $s_{k}$. To solve this system we can look at it as the system we solve in the conjugate gradient method where the hessian of our loss function will be the symmetric definite positive matrix $A$ and the negative gradient $- \nabla F(\omega_{k})$ will be the $b$. So we can solve it with the conjugate gradient method and find $x$ that is our $s_{k}$.
@@ -82,11 +82,11 @@ In our implementation we receive a series of points $(x_{i},y_{i})$ such that $y
 
 The first thing we do is to write our loss function in a matrix notation given by:
 
-$$ F(\omega_{k}) = \frac{1}{2}\omega_{k}^{T}H\omega_{k} - Z^{T}\omega_{k} + C$$
+$$ F(\omega_{k}) = (1/2)\omega_{k}^{T}H\omega_{k} - Z^{T}\omega_{k} + C$$
 Such that each element of the matrix H is given by:
-$$ h_{i,j} = \frac{2}{n}\sum_{x \in D} x^{i + j}$$
+$$ h_{i,j} = (2/n)\sum_{x \in D} x^{i + j}$$
 And each element of the vector B is given by:
-$$ b_{i} = \frac{2}{n}\sum_{(x,y)\in D} x^{i}y$$
+$$ b_{i} = (2/n)\sum_{(x,y)\in D} x^{i}y$$
 The sacalar $c$ can be found 
 From this notation we know our gradient as:
 $$ \nabla F(\omega_{k}) = H\omega_{k} - Z^{T}$$

@@ -43,13 +43,13 @@ $$ d_{(0)} \xleftarrow{} r_{(0)}$$
 
 Then we follow the next steps iteratively:
 
-1. $$\alpha_{(i)} = (r^{T}_{(i)}r_{(i)})/(d^{T}_{(i)}Ad_{(i)})$$
+1. $$\alpha_{(i)} = (r^{T}_{(i)} r_{(i)}) / (d^{T}_{(i)} Ad_{(i)})$$
 
 2. $$x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)} $$
 
 3. $$r_{(i+1)} = r_{(i)} - \alpha_{(i)}Ad_{(i)} $$
 
-4. $$\beta_{(i+1)} = (r^{T}_{(i+1)}r_{(i+1)})/(r^{T}_{(i)}r_{(i)}) $$
+4. $$\beta_{(i+1)} = (r^{T}_{(i+1)} r_{(i+1)}) / (r^{T}_{(i)} r_{(i)}) $$
 
 5. $$d_{(i+1)} = r_{(i+1)} + \beta_{(i+1)}d_{(i)} $$
 

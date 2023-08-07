@@ -25,7 +25,6 @@ def steepest_descent(A,b,c,x0,epsilon):
         print("current point",xi)
 
         print("Function value", quadraticFunction_f(A,b,c,xi))
-        print()
         Ar=np.dot(A,minus_gradient)
         gradient_square=np.dot(minus_gradient,minus_gradient)
         rAr=np.dot(minus_gradient,Ar)

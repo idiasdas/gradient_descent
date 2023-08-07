@@ -5,7 +5,7 @@ Steepest descent and Newton's method implementation for Distributed Optimisation
 Authors: Igor Dias da Silva and [Younes Ben Mazziane]
 
 ## Abstract
-In this project, we applied the Newton method along with the conjugate gradient to approximate polynomial functions. We investigated the effects of stopping the conjugate gradient with $k<d$ iterations and observed that it can be beneficial to do it. 
+In this project, we applied the Newton method along with the conjugate gradient to approximate polynomial functions. We investigated the effects of stopping the conjugate gradient with $ k < d $ iterations and observed that it can be beneficial to do it. 
 
 ## Project Report
 

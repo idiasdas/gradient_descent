@@ -35,25 +35,24 @@ $$
 $$
 
 Where $d_{(i)}$ is a search direction and $\alpha_{(i)}$ is the step size we take in this direction. In this method, the residual at each iteration, given by $r_{(i)} = b - Ax_{(i)}$, is orthogonal to all the previous search directions. This means that the set of residuals are independent vectors. Thus we can use Gram-Shmidt on these vectors to construct the A-orthogonal search directions. Which is called the Conjugate Gradient method. Given an initial vector $x_{(0)}$,we initialise the first residual and search direction as below:
-$$
-    r_{(0)} \xleftarrow{}  b - Ax_{(0)}
-$$
-$$
-    d_{(0)} \xleftarrow{} r_{(0)}
-$$
+
+$$ r_{(0)} \xleftarrow{}  b - Ax_{(0)}$$
+
+
+$$ d_{(0)} \xleftarrow{} r_{(0)}$$
 
 
 Then we follow the next steps iteratively:
 
-1. $$\alpha_{(i)} = \frac{r^{T}_{(i)}r_{(i)}}{d^{T}_{(i)}Ad_{(i)}}$$
+1. $$ \alpha_{(i)} = \frac{r^{T}_{(i)}r_{(i)}}{d^{T}_{(i)}Ad_{(i)}}$$
 
-2. $$x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)}$$
+2. $$ x_{(i+1)} = x_{(i)} + \alpha_{(i)}d_{(i)}$$
 
-3. $$r_{(i+1)} = r_{(i)} - \alpha_{(i)}Ad_{(i)}$$
+3. $$ r_{(i+1)} = r_{(i)} - \alpha_{(i)}Ad_{(i)}$$
 
-4. $$\beta_{(i+1)} = \frac{r^{T}_{(i+1)}r_{(i+1)}}{r^{T}_{(i)}r_{(i)}}$$
+4. $$ \beta_{(i+1)} = \frac{r^{T}_{(i+1)}r_{(i+1)}}{r^{T}_{(i)}r_{(i)}}$$
 
-5. $$d_{(i+1)} = r_{(i+1)} + \beta_{(i+1)}d_{(i)}$$
+5. $$ d_{(i+1)} = r_{(i+1)} + \beta_{(i+1)}d_{(i)}$$
 
 In 1, we compute the step size. Then in 3, we compute the new residual. Finally, we use 4 and 5 to compute the next direction, which is A-orthogonal to all previous directions. Equations 4 and 5 were obtained using Gram-Schmidt Conjugation to produce the new direction.
 In what follows, we will use the conjugate gradient method to solve the system $Ax = b$ in the Newton method and evaluate the effect of using iterations less than $b$.

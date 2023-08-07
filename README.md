@@ -76,9 +76,7 @@ $$Ax = b$$
 
 ### 4. Experiments
 
-
-
-In our implementation we receive a series of points $(x_{i},y_{i})$ such that $y_{i} = f(\omega$x^{\star}$,x_{i})$ and we say this is our data set $D$. We consider the dimension of the polynomial we are going to use to predict these points to be the same dimension of the polynomial $f(\omega$x^{\star}$,x)$. So we have an initial parameter vector $\omega_{(0)}$ that we initiate with zeros and we want to apply the Newton method with the conjugate gradient to converge to $\omega$x^{\star}$$.
+In our implementation, we receive a series of points $(x_{i},y_{i})$ such that $y_{i} = f(\omega x^{\star},x_{i})$ and we say this is our data set $D$. We consider the dimension of the polynomial we are going to use to predict these points to be the same dimension of the polynomial $f(\omega x^{\star},x)$. So we have an initial parameter vector $\omega_{(0)}$ that we initiate with zeros, and we want to apply the Newton method with the conjugate gradient to converge to $\omega x^{\star}$.
 
 The first thing we do is to write our loss function in a matrix notation given by:
 
@@ -87,15 +85,14 @@ Such that each element of the matrix H is given by:
 $$ h_{i,j} = (2/n)\sum_{x \in D} x^{i + j}$$
 And each element of the vector B is given by:
 $$ b_{i} = (2/n)\sum_{(x,y)\in D} x^{i}y$$
-The sacalar $c$ can be found 
 From this notation we know our gradient as:
 $$ \nabla F(\omega_{k}) = H\omega_{k} - Z^{T}$$
 
 And the Hessian is simply $H$.
 
-In our experiments we considered 3 different degrees for the polynomials, 3,5 and 7. And we used 3 different polynomials for each degree. So we have 9 different functions that we want to approximate using the Newton Method with Conjugate Gradient. For each function, we evaluate the effect of using $i<d$ iterations, $d$ is the degree of the polynomial, in the CG method on the number of iterations taken by the Newton method to converge to the optimal solution within a fixed error of $0.1$. We note that if the Newton method iterates can't reach this precision within 10 million iterations, we stop the algorithm.
+In our experiments, we considered 3 different degrees for the polynomials, 3,5 and 7. And we used 3 different polynomials for each degree. So we have 9 different functions that we want to approximate using the Newton Method with Conjugate Gradient. For each function, we evaluate the effect of using $i<d$ iterations, $d$ is the degree of the polynomial in the CG method on the number of iterations taken by the Newton method to converge to the optimal solution within a fixed error of $0.1$. We note that if the Newton method iterates and cannot reach this precision within 10 million iterations, we stop the algorithm.
 
-So for example, for a function that is a polynomial of degree 3, we are going to use another polynomial of degree 3 to approximate it, and we are going to do it three times. In the first time we will only execute the Conjugate Gradient for 1 iteration, the second time we are going to execute it for 2 iterations, and finally, in the third time, we are going to execute all 3 iterations.
+So, for example, for a function that is a polynomial of degree 3, we are going to use another polynomial of degree 3 to approximate it, and we are going to do it three times. In the first time, we will only execute the Conjugate Gradient for 1 iteration, the second time, we are going to execute it for 2 iterations. And finally, in the third time, we are going to execute all 3 iterations.
 
 The functions we considered were:
 
@@ -113,9 +110,9 @@ $$
 
 ### 5. Results
 
-In fthe figure below we can see the results we found for the function $y_{9} = 5 + 9x + 10x^{2} + 4x^{3} + 5x^{4} + 5x^{5} + x^{6}$. When we limited the iterations of conjugate gradient method to a single one, we were not able to converge to a precision of 0.1 in less than 10 million iterations of the Newton method so as we said the algorithm stopped. As soon as we use 2 iterations for the CG method, we can already converge to the precision of 0.1  in 2.1 million steps. This was expected since the more iterations we allow for the CG method the more precise is the $s_{k}$ we compute so we can converge faster.
+In the figure below, we can see the results we found for the function $y_{9} = 5 + 9x + 10x^{2} + 4x^{3} + 5x^{4} + 5x^{5} + x^{6}$. When we limited the iterations of the conjugate gradient method to a single one, we could not converge to a precision of 0.1 in less than 10 million iterations of the Newton method, so as we said, the algorithm stopped. As soon as we use 2 iterations for the CG method, we can already converge to the precision of 0.1  in 2.1 million steps. This was expected since the more iterations we allow for the CG method, the more precise the $s_{k}$ we compute to converge faster.
 
-What we didn't expect is the step we found in all our experiments for the number of iterations close to the number of dimensions. We can see in this example that if we use 5 iterations for the CG method, 6 or 7, we converge to the precision 0.1 with the same number of iterations for the Newton method. This indicates that the last iterations of the conjugate gradient method don't give us much more precision on $s_{k}$ and therefore we don't actually need to compute all iterations of the conjugate gradient. 
+What we did not expect is the step we found in all our experiments for the number of iterations close to the number of dimensions. We can see in this example that if we use 5 iterations for the CG method, 6 or 7, we converge to the precision 0.1 with the same number of iterations for the Newton method. This indicates that the last iterations of the conjugate gradient method do not give us much more precision on $s_{k}$, and therefore we do not need to compute all iterations of the conjugate gradient. 
 
 ![alt text](y9.png)
 

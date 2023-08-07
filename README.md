@@ -67,12 +67,12 @@ We define our loss function as:
 $$F(\omega_{k}) = (1/n)\sum^{n}_{i=1}(f(\omega_{k},x) - y)^{2}$$
 
 
-If we want to find the parameter vector $\omega$x^{\star}$$ that minimizes our loss function $F(\omega)$, we can use the equations \ref{Eq:Newton_update_param_vector} and \ref{Eq:Newton_find_sk} of the Newton method, and converge to the answer. But to do this we need to solve the system in equation \ref{Eq:Newton_find_sk} to find $s_{k}$. To solve this system we can look at it as the system we solve in the conjugate gradient method where the hessian of our loss function will be the symmetric definite positive matrix $A$ and the negative gradient $- \nabla F(\omega_{k})$ will be the $b$. So we can solve it with the conjugate gradient method and find $x$ that is our $s_{k}$.
+If we want to find the parameter vector $\omega x^{\star}$ that minimises our loss function $F(\omega)$, we can use the equations of the Newton method and converge to the answer. However, we need to solve the system in the second equation to find $s_{k}$. 
 
-$$
-    \nabla^{2} F(\omega_{k})s_{k} = - \nabla F(\omega_{k})\\
-    Ax = b
-$$
+To solve this system, we can look at it as the system we solve in the conjugate gradient method where the hessian of our loss function will be the symmetric definite positive matrix $A$, and the negative gradient $- \nabla F(\omega_{k})$ will be the $b$. So we can solve it with the conjugate gradient method and find $x$ that is our $s_{k}$.
+
+$$\nabla^{2} F(\omega_{k})s_{k} = - \nabla F(\omega_{k})$$
+$$Ax = b$$
 
 ### 4. Experiments
 

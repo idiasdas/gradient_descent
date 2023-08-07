@@ -67,7 +67,7 @@ We define our loss function as:
 $$F(\omega_{k}) = (1/n)\sum^{n}_{i=1}(f(\omega_{k},x) - y)^{2}$$
 
 
-If we want to find the parameter vector $\omega^{*}$ that minimizes our loss function $F(\omega)$, we can use the equations \ref{Eq:Newton_update_param_vector} and \ref{Eq:Newton_find_sk} of the Newton method, and converge to the answer. But to do this we need to solve the system in equation \ref{Eq:Newton_find_sk} to find $s_{k}$. To solve this system we can look at it as the system we solve in the conjugate gradient method where the hessian of our loss function will be the symmetric definite positive matrix $A$ and the negative gradient $- \nabla F(\omega_{k})$ will be the $b$. So we can solve it with the conjugate gradient method and find $x$ that is our $s_{k}$.
+If we want to find the parameter vector $\omega$x^{\star}$$ that minimizes our loss function $F(\omega)$, we can use the equations \ref{Eq:Newton_update_param_vector} and \ref{Eq:Newton_find_sk} of the Newton method, and converge to the answer. But to do this we need to solve the system in equation \ref{Eq:Newton_find_sk} to find $s_{k}$. To solve this system we can look at it as the system we solve in the conjugate gradient method where the hessian of our loss function will be the symmetric definite positive matrix $A$ and the negative gradient $- \nabla F(\omega_{k})$ will be the $b$. So we can solve it with the conjugate gradient method and find $x$ that is our $s_{k}$.
 
 $$
     \nabla^{2} F(\omega_{k})s_{k} = - \nabla F(\omega_{k})\\
@@ -78,7 +78,7 @@ $$
 
 
 
-In our implementation we receive a series of points $(x_{i},y_{i})$ such that $y_{i} = f(\omega^{*},x_{i})$ and we say this is our data set $D$. We consider the dimension of the polynomial we are going to use to predict these points to be the same dimension of the polynomial $f(\omega^{*},x)$. So we have an initial parameter vector $\omega_{(0)}$ that we initiate with zeros and we want to apply the Newton method with the conjugate gradient to converge to $\omega^{*}$.
+In our implementation we receive a series of points $(x_{i},y_{i})$ such that $y_{i} = f(\omega$x^{\star}$,x_{i})$ and we say this is our data set $D$. We consider the dimension of the polynomial we are going to use to predict these points to be the same dimension of the polynomial $f(\omega$x^{\star}$,x)$. So we have an initial parameter vector $\omega_{(0)}$ that we initiate with zeros and we want to apply the Newton method with the conjugate gradient to converge to $\omega$x^{\star}$$.
 
 The first thing we do is to write our loss function in a matrix notation given by:
 
